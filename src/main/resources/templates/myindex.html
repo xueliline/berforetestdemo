@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>返回的模板</title>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+</head>
+<body>
+<div th:each="lm : ${mess}">
+    <li th:text ="${lm.name}"></li>
+    <li th:text ="${lm.age}"></li>
+</div>
+
+
+<form action="/getdata" method="post">
+    名字:<br>
+    <input type="text" name="name" value="Mickey"><br>
+    年龄:<br>
+    <input type="text" name="age" value="Mouse"><br><br>
+    <input type="submit" value="提交">
+
+
+</form>
+<br>
+<br>
+<button value="删除" id="button"></button>
+<script>
+    var funcc = function () {
+        var emp={lastName:"张三",gender:0};
+        alert("开始进行ajax测试")
+        $.ajax({
+            url:"/delete",
+            type:'POST',
+            data:emp,
+            success: function(data){
+                alert("ddddddddddddddddddddddd");
+            }
+        });
+    }
+    var aa = document.getElementById('button')
+    aa.onclick = funcc
+
+</script>
+</body>
+</html>
